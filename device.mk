@@ -106,7 +106,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     mcDriverDaemon \
     fingerprint.exynos5 \
-
+    libbauthtzcommon_shim
 
 ###########
 #  Light  #
