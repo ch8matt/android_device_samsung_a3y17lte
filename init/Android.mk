@@ -14,25 +14,17 @@
 # limitations under the License.
 #
 
-TARGET_OTA_ASSERT_DEVICE := a3y17lte,a3y17ltexc,a3y17ltexx,a3y17ltelk
+LOCAL_PATH := $(call my-dir)
 
-# Inherit from Exynos7870-common
-include device/samsung/exynos7870-common/BoardConfigCommon.mk
+include $(CLEAR_VARS)
 
-# Init
-TARGET_INIT_VENDOR_LIB := libinit_a3y17lte
+LOCAL_MODULE_TAGS := optional
+LOCAL_C_INCLUDES := \
+    system/core/base/include \
+    system/core/init
+LOCAL_CFLAGS := -Wall -DANDROID_TARGET=\"$(TARGET_BOARD_PLATFORM)\"
+LOCAL_SRC_FILES := init_a3y17lte.cpp
+LOCAL_MODULE := libinit_a3y17lte
+LOCAL_STATIC_LIBRARIES += libbase
 
-# Path
-LOCAL_PATH := device/samsung/a3y17lte
-
-# inherit the splitted configs
-include $(LOCAL_PATH)/configs/board/*.mk
-
-# Hidl
-DEVICE_MANIFEST_FILE := $(LOCAL_PATH)/configs/manifest/manifest.xml
-
-# Properties
-TARGET_SYSTEM_PROP += $(LOCAL_PATH)/system.prop
-
-# Inherit from the proprietary version
--include vendor/samsung/a3y17lte/BoardConfigVendor.mk
+include $(BUILD_STATIC_LIBRARY)
