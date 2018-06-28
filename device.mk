@@ -16,6 +16,8 @@
 
 LOCAL_PATH := device/samsung/a3y17lte
 
+DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
+
 # Inherit from Exynos7870-common
 $(call inherit-product, device/samsung/exynos7870-common/device-common.mk)
 
