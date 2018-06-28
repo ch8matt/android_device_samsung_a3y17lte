@@ -33,3 +33,18 @@ PRODUCT_AAPT_PREF_CONFIG := xhdpi
 # Boot animation
 TARGET_SCREEN_WIDTH := 720
 TARGET_SCREEN_HEIGHT := 1080
+
+
+##########
+#  Wifi  #
+##########
+
+# Wifi package
+PRODUCT_PACKAGES += \
+    hostapd \
+    libqsap_sdk \
+    libQWiFiSoftApCfg \
+    libwpa_client \
+    wpa_supplicant \
+    wpa_supplicant.conf \
+
