@@ -104,3 +104,11 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     mcDriverDaemon \
     fingerprint.exynos5 \
+
+
+###########
+#  Light  #
+###########
+
+PRODUCT_PACKAGES += \
+    lights.universal7870 \
