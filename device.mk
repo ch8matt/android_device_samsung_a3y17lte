@@ -76,4 +76,5 @@ PRODUCT_COPY_FILES += \
 
 # Audio Package
 PRODUCT_PACKAGES += \
-   libtfa98xx
+   libtfa98xx \
+   audio_amplifier.universal7870
