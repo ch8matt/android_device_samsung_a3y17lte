@@ -21,5 +21,8 @@ include device/samsung/exynos7870-common/BoardConfigCommon.mk
 
 LOCAL_PATH := device/samsung/a3y17lte
 
+# inherit the splitted configs
+include $(LOCAL_PATH)/configs/board/*.mk
+
 # Inherit from the proprietary version
 -include vendor/samsung/a3y17lte/BoardConfigVendor.mk
