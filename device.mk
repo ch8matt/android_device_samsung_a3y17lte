@@ -21,3 +21,15 @@ $(call inherit-product, device/samsung/exynos7870-common/device-common.mk)
 
 # call the proprietary setup
 $(call inherit-product, vendor/samsung/a3y17lte/a3y17lte-vendor.mk)
+
+
+##############
+#  Graphics  #
+##############
+
+# Device uses high-density artwork where available
+PRODUCT_AAPT_PREF_CONFIG := xhdpi
+
+# Boot animation
+TARGET_SCREEN_WIDTH := 720
+TARGET_SCREEN_HEIGHT := 1080
