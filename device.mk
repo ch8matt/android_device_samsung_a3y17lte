@@ -49,6 +49,8 @@ PRODUCT_PACKAGES += \
     libwpa_client \
     wpa_supplicant \
     wpa_supplicant.conf \
+    android.hardware.wifi@1.0-service
+
 
 # Wi-Fi Configs
 PRODUCT_COPY_FILES += \
@@ -106,7 +108,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     mcDriverDaemon \
     fingerprint.exynos5 \
-    libbauthtzcommon_shim
+    libbauthtzcommon_shim \
+    android.hardware.biometrics.fingerprint@2.1-impl \
+    android.hardware.biometrics.fingerprint@2.1-service
+
 
 ###########
 #  Light  #
@@ -114,6 +119,7 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     lights.universal7870 \
+    android.hardware.light@2.0-impl
 
 
 #########
