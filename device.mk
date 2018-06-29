@@ -101,7 +101,15 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.ethernet.xml:system/vendor/etc/permissions/android.hardware.ethernet.xml \
     frameworks/native/data/etc/com.nxp.mifare.xml:system/vendor/etc/permissions/com.nxp.mifare.xml \
     $(LOCAL_PATH)/configs/permissions/com.samsung.permission.HRM_EXT.xml:system/vendor/etc/permissions/com.samsung.permission.HRM_EXT.xml \
-    $(LOCAL_PATH)/configs/permissions/com.samsung.permission.SSENSOR.xml:system/vendor/etc/permissions/com.samsung.permission.SSENSOR.xml
+    $(LOCAL_PATH)/configs/permissions/com.samsung.permission.SSENSOR.xml:system/vendor/etc/permissions/com.samsung.permission.SSENSOR.xml \
+    $(LOCAL_PATH)/configs/permissions/android.hardware.nfc.hce.xml:system/vendor/etc/permissions/android.hardware.nfc.hce.xml \
+    $(LOCAL_PATH)/configs/permissions/android.hardware.nfc.hcef.xml:system/vendor/etc/permissions/android.hardware.nfc.hcef.xml \
+    $(LOCAL_PATH)/configs/permissions/android.hardware.nfc.xml:system/vendor/etc/permissions/android.hardware.nfc.xml \
+    $(LOCAL_PATH)/configs/permissions/com.android.nfc_extras.xml:system/vendor/etc/permissions/com.android.nfc_extras.xml \
+    $(LOCAL_PATH)/configs/permissions/com.gsma.services.nfc.xml:system/vendor/etc/permissions/com.gsma.services.nfc.xml \
+    $(LOCAL_PATH)/configs/permissions/com.samsung.android.nfc.mpos.xml:$system/vendor/etc/permissions/com.samsung.android.nfc.mpos.xml \
+    $(LOCAL_PATH)/configs/permissions/com.sec.feature.cover.nfc_authentication.xml:system/vendor/etc/permissions/com.sec.feature.cover.nfc_authentication.xml \
+    $(LOCAL_PATH)/configs/permissions/com.sec.feature.nfc_authentication.xml:system/vendor/etc/permissions/com.sec.feature.nfc_authentication.xml
 
 
 #################
