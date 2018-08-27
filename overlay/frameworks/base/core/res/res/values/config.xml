@@ -74,7 +74,7 @@
     <bool name="config_displayBlanksAfterDoze">true</bool>
 
     <!-- For performance and storage reasons, limit the number of fingerprints per user -->
-    <integer name="config_fingerprintMaxTemplatesPerUser">3</integer>
+    <integer name="config_fingerprintMaxTemplatesPerUser">4</integer>
 
     <!-- Boolean indicating whether the HWC setColorTransform function can be performed efficiently in hardware. -->
     <bool name="config_nightDisplayAvailable">true</bool>
