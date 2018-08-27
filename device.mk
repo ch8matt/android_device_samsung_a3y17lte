@@ -158,3 +158,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/releasetools/nfc_scripts.sh:install/bin/nfc_scripts.sh \
     $(LOCAL_PATH)/configs/nfc/libnfc-sec-hal.conf.s3nrn81:system/etc/libnfc-sec-hal.conf.s3nrn81
 
+########
+# Misc #
+########
+
+# FlipFlap
+PRODUCT_PACKAGES += \
+    FlipFlap
