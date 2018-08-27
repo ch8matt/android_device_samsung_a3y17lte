@@ -60,6 +60,10 @@ on post-fs-data
     mkdir /data/misc/profiles/cur 0771 system system
     mkdir /data/misc/profiles/ref 0771 system system
 
+    # Permissions for gnss
+    chmod 0660 /dev/gnss_ipc
+    chown system system /dev/gnss_ipc
+
 on boot
 
     # basic network init
