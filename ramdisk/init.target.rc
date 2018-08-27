@@ -66,6 +66,9 @@ on post-fs-data
 
 on boot
 
+    # Disable touch input booster
+    write /sys/class/input_booster/level 0
+
     # basic network init
     ifup lo
     hostname localhost
