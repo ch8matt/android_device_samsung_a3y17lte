@@ -24,6 +24,11 @@ $(call inherit-product, device/samsung/exynos7870-common/device-common.mk)
 # call the proprietary setup
 $(call inherit-product, vendor/samsung/a3y17lte/a3y17lte-vendor.mk)
 
+# Call SLSI
+ifneq ($(WITH_EXYNOS_BSP),)
+$(call inherit-product, hardware/samsung_slsi/exynos5/exynos5.mk)
+$(call inherit-product, hardware/samsung_slsi/exynos7870/exynos7870.mk)
+endif
 
 ##############
 #  Graphics  #
