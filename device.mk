@@ -30,6 +30,9 @@ $(call inherit-product, hardware/samsung_slsi/exynos5/exynos5.mk)
 $(call inherit-product, hardware/samsung_slsi/exynos7870/exynos7870.mk)
 endif
 
+# Hidl
+DEVICE_MANIFEST_FILE := $(LOCAL_PATH)/configs/manifest/manifest.xml
+
 ##############
 #  Graphics  #
 ##############
