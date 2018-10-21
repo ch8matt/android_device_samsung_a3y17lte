@@ -28,9 +28,6 @@ LOCAL_PATH := device/samsung/a3y17lte
 # inherit the splitted configs
 include $(LOCAL_PATH)/configs/board/*.mk
 
-# Hidl
-DEVICE_MANIFEST_FILE := $(LOCAL_PATH)/configs/manifest/manifest.xml
-
 # Properties
 TARGET_SYSTEM_PROP += $(LOCAL_PATH)/system.prop
 
