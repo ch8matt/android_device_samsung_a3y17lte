@@ -26,3 +26,4 @@
 #define BTIF_HF_WBS_PREFERRED TRUE  /* Use WBS    */
 
 #endif
+

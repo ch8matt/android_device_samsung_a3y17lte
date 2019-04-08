@@ -1,10 +1,8 @@
+
 # Wi-Fi init file
 
 on post-fs-data
-
-    #Load Wifi Driver
-    insmod /system/lib/modules/qca_cld/qca_cld_wlan.ko
-    setprop wlan.driver.status ok
+    #setprop wlan.driver.status ok
 
     # give system access to wpa_supplicant.conf for backup and restore
     mkdir /data/misc/wifi 0770 wifi system
@@ -17,7 +15,8 @@ on post-fs-data
     mkdir /data/media/wifi/log/ 0770 wifi system
     mkdir /data/misc/dhcp 0775 dhcp dhcp
     chown dhcp dhcp /data/misc/dhcp
-
+    chown wifi root /dev/rfkill
+    
     # Create the directories used by the Wireless subsystem
     mkdir /data/vendor/wifi 0770 wifi wifi
     mkdir /data/vendor/wifi/sockets 0770 wifi wifi
@@ -29,12 +28,11 @@ on post-fs-data
     copy /system/vendor/etc/wifi/wpa_supplicant.conf /data/vendor/wifi/wpa/wpa_supplicant.conf
     chown wifi system /data/vendor/wifi/wpa/wpa_supplicant.conf
     chmod 0660 /data/vendor/wifi/wpa/wpa_supplicant.conf
-
+    
     # for WIFI TRP/TIS
     mkdir /data/misc/conn 0771 system root
     chown system root /data/misc/conn/.psm.info
     chmod 0664 /data/misc/conn/.psm.info
-
 
     # for WIFI Antenna Selection
     chown system root /data/misc/conn/.ant.info
@@ -51,7 +49,7 @@ on post-fs-data
     chmod 0666 /data/misc/conn/.wificable.info
 
     # for WIFI MEMDUMP
-    write /data/misc/conn/.memdump.info 2
+    write /data/misc/conn/.memdump.info 3
     chown system root /data/misc/conn/.memdump.info
     chmod 0666 /data/misc/conn/.memdump.info
 
@@ -74,20 +72,18 @@ on post-fs-data
     chown wifi wifi /sys/module/wlan/parameters/fwpath
 
 on boot
-    setprop wifi.interface wlan0
-
+    
     # Pcie WiFi T-put setting
     write /sys/class/net/wlan0/queues/rx-0/rps_cpus 00
 
-    restart wpa_supplicant
 
 service wpa_supplicant /vendor/bin/hw/wpa_supplicant \
-        -I/system/vendor/etc/wifi/wpa_supplicant_overlay.conf -N \
-        -ip2p0 -Dnl80211
-        -g@android:wpa_wlan0
+    -puse_p2p_group_interface=1p2p_device=1 \
+    -O/data/vendor/wifi/wpa/sockets -puse_p2p_group_interface=1 -dd \
+    -g@android:wpa_wlan0
     # we will start as root and wpa_supplicant will switch to user wifi
     # after setting up the capabilities required for WEXT
-    # user wifi
+    # user root
     # group wifi inet keystore
     interface android.hardware.wifi.supplicant@1.0::ISupplicant default
     interface android.hardware.wifi.supplicant@1.1::ISupplicant default
@@ -96,21 +92,7 @@ service wpa_supplicant /vendor/bin/hw/wpa_supplicant \
     disabled
     oneshot
 
-# tiburona
-# start for WiFi MFG (TestMode)
-service mfgloader /system/bin/mfgloader
-    class main
-    disabled
-    oneshot
-
-service wlandutservice /system/bin/wlandutservice
-    class main
-    user system
-    group wifi net_raw net_admin system inet
-    disabled
-    oneshot
-
-service macloader /system/bin/macloader
+service macloader /vendor/bin/macloader
     class main
     oneshot
 
@@ -119,4 +101,6 @@ on property:init.svc.macloader=stopped
     chmod 0664 /data/misc/conn/.cid.info
     chown system root /data/.rev
     chmod 0664 /data/.rev
-# end of WiFi MFG (TestMode)
+
+on property:sys.boot_completed=1
+    insmod /modules/qca_cld/qca_cld_wlan.ko

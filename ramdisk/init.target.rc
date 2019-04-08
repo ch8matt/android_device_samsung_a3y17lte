@@ -1,7 +1,7 @@
 on early-init
     mkdir /cpefs 0771 radio system
-    mount debugfs /sys/kernel/debug /sys/kernel/debug
-    
+mount debugfs /sys/kernel/debug /sys/kernel/debug
+
 on init 
     symlink /system/vendor /vendor
 
@@ -69,7 +69,9 @@ on post-fs-data
 
 on boot
 
-    # Disable touch input booster
+    setprop wifi.interface.started 1
+
+    # Disable touch input booster // USELESS BATTERY DRAIN
     write /sys/class/input_booster/level 0
 
     # basic network init
@@ -130,6 +132,7 @@ on boot
 
     # Permission for HALL IC
     chown system system /sys/class/sec/sec_key/hall_detect
+
     # HALL IC IRQ CTRL
     chown system system /sys/class/sec/sec_key/hall_irq_ctrl
 
@@ -145,19 +148,6 @@ on boot
     chown system system /sys/class/lcd/panel/dpui
     chown system system /sys/class/lcd/panel/dpui_dbg
     chown system system /sys/devices/svc/OCTA/SVC_OCTA
-
-    # Grip_sensor wifi
-    chown system radio /sys/class/sensors/grip_sensor_wifi/name
-    chown system radio /sys/class/sensors/grip_sensor_wifi/vendor
-    chown system radio /sys/class/sensors/grip_sensor_wifi/raw_data
-    chown system radio /sys/class/sensors/grip_sensor_wifi/threshold
-    chown system radio /sys/class/sensors/grip_sensor_wifi/calibration
-    chown system radio /sys/class/sensors/grip_sensor_wifi/onoff
-    chown system radio /sys/class/sensors/grip_sensor_wifi/reset
-    chown system radio /sys/class/sensors/grip_sensor_wifi/mode
-    chown system radio /sys/class/sensors/grip_sensor_wifi/gain
-    chown system radio /sys/class/sensors/grip_sensor_wifi/normal_threshold
-    chown system radio /sys/class/sensors/grip_sensor_wifi/freq
     
     ## Sensors permissions ##
     
@@ -365,28 +355,28 @@ on property:sys.boot_completed=1
     pdp result
     start iod
 
-    service mobicore /system/bin/mcDriverDaemon -r /system/app/FFFFFFFF000000000000000000000001.drbin -r /system/app/mcRegistry/ffffffffd0000000000000000000000a.tlbin -r /system/app/mcRegistry/ffffffffd00000000000000000000016.tlbin
+service mobicore /system/bin/mcDriverDaemon -r /system/app/FFFFFFFF000000000000000000000001.drbin -r /system/app/mcRegistry/ffffffffd0000000000000000000000a.tlbin -r /system/app/mcRegistry/ffffffffd00000000000000000000016.tlbin
     class core
     user system
     group system
     disabled
 
-    # Sensorhub service
-    service sensorhubservice /system/bin/sensorhubservice
+# Sensorhub service
+service sensorhubservice /system/bin/sensorhubservice
     class main
     user system
     group input
 
-    # IO stats Deamon
-    service iod /system/bin/iod
+# IO stats Deamon
+service iod /system/bin/iod
     user system
     group shell
     class main
     oneshot
     disabled
 
-    # wcnss filter
-    service start_hci_filter /system/bin/wcnss_filter
+# wcnss filter
+service start_hci_filter /system/bin/wcnss_filter
     class late_start
     user bluetooth
     group bluetooth qcom_diag
@@ -412,4 +402,3 @@ on property:init.svc.bootanim=stopped
     chown system system /efs/FactoryApp/tkey_light13
     chown system system /efs/FactoryApp/tkey_light14
     chown system system /efs/FactoryApp/tkey_light15
-

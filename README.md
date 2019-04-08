@@ -1,6 +1,9 @@
+
 ```
-Copyright (C) 2017-2018 The LineageOS Project
-Copyright (C) 2017-2018 McFy <g.matthieu49@gmail.com>
+Copyright (C) 2017 The LineageOS Project
+Copyright (C) 2017 McFy  <g.matthieu49@gmail.com>
+Copyright (C) 2017 Valera Chigir <valera1978@tut.by>
+Copyright (C) 2017 Siddhant Naik
 ```
 
 Device configuration for the Samsung Galaxy A3 2017 (A320F/FL/xx)
@@ -11,7 +14,7 @@ The A3 2017 (codenamed _"a3y17lte"_) is a 4.7" mid-range smartphone made by Sams
 
 It was released in January 2017.
 
-_Notice: **WIP, will eat your dope !**_
+_Notice: **This is a work in progress tree, it may not work**_
 
 ## Device specifications ## 
 
@@ -33,3 +36,9 @@ Sensors | Accelerometer, Proximity, FingerPrint, Gyroscope, compass, barometer
 
 ![Samsung Galaxy a3 2017](https://static.dealbuzz.fr/2017/08/global-mkt-galaxy-a3-Black_Front_Side_Back_Configurator.png "A3 2017 in black")
 
+
+ 
+
+
+
+------------------------------------------------------------------

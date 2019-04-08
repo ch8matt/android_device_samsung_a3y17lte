@@ -1,11 +1,14 @@
+# Battery Tweaks
+power.saving.mode=1
+ro.ril.disable.power.collapse=0 
+ro.ril.power_collapse=1
+power_supply.wakeup=enable
+
 # ro.product.first_api_level indicates the first api level the device has commercially launched on.
 ro.product.first_api_level=23
 
 # DPI
 ro.sf.lcd_density=311
-
-# Sdcardfs
-ro.sys.sdcardfs=false
 
 # Bluetooth workaround:
 # The new CAF code defaults to MCT HAL
@@ -17,7 +20,17 @@ ro.nfc.sec_hal=true
 
 # Wifi
 net.tethering.noprovisioning=true
+#wifi.direct.interface=p2p-dev-wlan0
+wifi.fccutild.load.qcacld=true
 
 # Audio
 audio_hal.disable_two_mic=false
 
+# Sdcardfs
+ro.sys.sdcardfs=false
+
+# Battery Tweaks
+power.saving.mode=1
+ro.ril.disable.power.collapse=0 
+ro.ril.power_collapse=1
+power_supply.wakeup=enable
